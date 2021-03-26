@@ -73,3 +73,35 @@
 
     export default App;
 ```
+
+### (5) Create index.js File [/src/actions] That Contains Action Creators And Import It Inside [PostsList.js] And Setup Redux Connection
+
+#### index.js
+```js
+    export const fetchPosts = () => {
+        return {
+            type: "FETCH_POSTS"
+        }
+    }
+```
+
+#### PostsList.js
+```js
+    import React,{useEffect} from 'react'
+    import {connect} from 'react-redux'
+    import {fetchPosts} from '../actions/'
+
+    function PostList(props) {
+
+        useEffect(() => {
+            console.log(props.fetchPosts())
+        } , [])
+        return (
+            <div>
+                PostList
+            </div>
+        )
+    }
+
+    export default connect(null , {fetchPosts})(PostList)
+```

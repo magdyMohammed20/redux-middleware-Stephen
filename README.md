@@ -13,7 +13,7 @@
     
     ### Setup Redux Connection Inside ./src/index.js
 
-    ```
+    ``` 
         import ReactDOM from 'react-dom';
         import App from './App';
 
@@ -22,9 +22,9 @@
         import reducers from './reducers'
 
         ReactDOM.render(
-        <Provider store={createStore(reducers)}>
-            <App />
-        </Provider>, 
-        document.getElementById('root')
+            <Provider store={createStore(reducers)}>
+                <App />
+            </Provider>, 
+           document.getElementById('root')
         );
     ```

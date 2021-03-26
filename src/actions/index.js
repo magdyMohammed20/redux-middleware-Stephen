@@ -1,13 +1,10 @@
 import json from '../apis/json'
 
-export const fetchPosts =  () => {
-    // Edit fetchPosts By Make It Return A Function
-    return function(dispatch , getState){
-        const response =  json.get('/posts');
+export const fetchPosts =  () => async dispatch => {
+        const response =  await json.get('/posts');
 
-        return {
+        dispatch({
             type: "FETCH_POSTS",
             payload: response
-        }
+        })
     }
-}

@@ -157,3 +157,39 @@
         }
     }
 ```
+
+### (8) Inside [/src/index.js] Setup Thunk And Middleware [Import 'thunk' , applyMiddleware] And Edit 'fetchPosts' Action Creator Inside [/src/actions/index.js]
+
+#### /src/index.js
+```js
+    import ReactDOM from 'react-dom';
+    import App from './App';
+
+    import {createStore , applyMiddleware} from 'redux'
+    import {Provider} from 'react-redux'
+    import reducers from './reducers/'
+    import thunk from 'redux-thunk'
+
+    const store = createStore(reducers , applyMiddleware(thunk));
+
+    ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root')
+    );
+```
+
+#### /src/actions/index.js
+```js
+    import json from '../apis/json'
+
+    export const fetchPosts =  () => async dispatch => {
+            const response =  await json.get('/posts');
+
+            dispatch({
+                type: "FETCH_POSTS",
+                payload: response
+            })
+        }
+```

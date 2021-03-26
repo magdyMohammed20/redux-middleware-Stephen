@@ -9,6 +9,12 @@
     - reducers
      - index.js
 
+    - actions
+     - index.js
+
+    - apis
+     - json.js
+
 
 # Steps Of App
 
@@ -104,4 +110,30 @@
     }
 
     export default connect(null , {fetchPosts})(PostList)
+```
+
+### (6) Create json.js File [/src/apis/] That Fetch Data Using Axios And Import Fetched Data Inside [/src/actions/index.js] But It Produce Error As Bad Approach Of Fetching Data
+
+#### json.js
+```js
+    import axios from 'axios'
+
+    export default axios.create({
+        baseURL: "https://jsonplaceholder.typicode.com"
+    })
+```
+
+#### index.js
+```js
+    import json from '../apis/json'
+
+    export const fetchPosts = async () => {
+        // bad Approach
+        const response = await json.get('/posts');
+
+        return {
+            type: "FETCH_POSTS",
+            payload: response
+        }
+    }
 ```

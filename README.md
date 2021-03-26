@@ -3,6 +3,7 @@
 ## Project Structure
 
 /src
+
     - Components
      - PostList.js
 

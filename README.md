@@ -28,3 +28,10 @@
        document.getElementById('root')
     );
 ```
+### (3) Create Reducers Files [/src/reducers/index.js ]
+
+```js
+    import {combineReducers} from 'redux'
+
+    export default combineReducers({replaceMe: () => "Hi"});
+```

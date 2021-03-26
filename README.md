@@ -3,6 +3,11 @@
 ## Project Structure
 
 /src
+    - Components
+     - PostList.js
+
+    - reducers
+     - index.js
 
 
 # Steps Of App
@@ -34,4 +39,37 @@
     import {combineReducers} from 'redux'
 
     export default combineReducers({replaceMe: () => "Hi"});
+```
+
+### (4) Create PostList.js File [/src/Components] And Import In [App.js]
+
+#### PostList.js
+```js
+    import React from 'react'
+
+    function PostList() {
+        return (
+            <div>
+                PostList
+            </div>
+        )
+    }
+
+    export default PostList
+```
+
+#### App.js
+```js
+    import PostList from './Components/PostList'
+
+    function App() {
+
+    return (
+        <div className="App">
+        <PostList/>
+        </div>
+    );
+    }
+
+    export default App;
 ```

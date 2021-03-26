@@ -13,7 +13,7 @@
     
     ### Setup Redux Connection Inside ./src/index.js
 
-    ```js
+    ```
         import ReactDOM from 'react-dom';
         import App from './App';
 

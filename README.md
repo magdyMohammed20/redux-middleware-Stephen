@@ -113,7 +113,7 @@
     export default connect(null , {fetchPosts})(PostList)
 ```
 
-### (6) Create json.js File [/src/apis/] That Fetch Data Using Axios And Import Fetched Data Inside [/src/actions/index.js] But It Produce Error As Bad Approach Of Fetching Data
+### (6) Create json.js File [/src/apis/] That Fetch Data Using Axios And Import Fetched Data Inside [/src/actions/index.js] But It Produce Error As Bad Approach Of Fetching Data And If Want To Dismiss The Error Remove [async , await] Keywords
 
 #### json.js
 ```js

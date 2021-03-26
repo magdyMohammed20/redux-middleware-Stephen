@@ -138,7 +138,6 @@
         }
     }
 ```
-<<<<<<< HEAD
 
 ### (7) Edit 'fetchPosts' Action Creator By Make It Return A Function And Remove [Async , Await] Keywords
 
@@ -158,5 +157,3 @@
         }
     }
 ```
-=======
->>>>>>> 6b1bddb67827f73ab26dd093cf1ae337e5aba68c

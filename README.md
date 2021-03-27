@@ -333,3 +333,66 @@ export const fetchPosts =  () => async dispatch => {
         })
     }
 ```
+
+### (14) Create 'UserHeader' Component For Display Fetched User Data And Import It In 'PostsList.js' Component
+
+#### /src/Components/UserHeader.js
+```js
+    import React , {useEffect} from 'react'
+    import {connect} from 'react-redux'
+    import {fetchUser} from '../actions/'
+
+    function UserHeader(props) {
+
+        useEffect(() => {
+            props.fetchUser(props.userId)
+        })
+
+        return (
+            <div>
+                UserHeader
+            </div>
+        )
+    }
+
+    export default connect(null , {fetchUser})(UserHeader)
+```
+
+#### /src/Components/PostList.js
+```js
+    import React,{useEffect} from 'react'
+    import {connect} from 'react-redux'
+    import {fetchPosts} from '../actions/'
+    import UserHeader from './UserHeader'
+
+    function PostList(props) {
+
+        
+        useEffect(() => {
+            props.fetchPosts()
+        } , [])
+
+        const renderList = () => {
+            return props.posts.map(post => {
+                return <div key={post.id}> 
+                    <h1>{post.title}</h1>
+                    <p>{post.body}</p>
+                    <UserHeader userId={post.userId}/>
+                </div>
+            })
+        }
+        
+        return (
+            <div>
+                {renderList()}
+            </div>
+        )
+    }
+
+    const mapStateToProps = state => {
+        return {
+            posts: state.posts
+        }
+    }
+    export default connect(mapStateToProps , {fetchPosts})(PostList)
+```

@@ -9,11 +9,18 @@ function PostList(props) {
         props.fetchPosts()
     } , [])
 
-    console.log(props.posts)
+    const renderList = () => {
+        return props.posts.map(post => {
+            return <div key={post.id}> 
+                <h1>{post.title}</h1>
+                <p>{post.body}</p>
+            </div>
+        })
+    }
     
     return (
         <div>
-            PostList
+            {renderList()}
         </div>
     )
 }

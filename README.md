@@ -318,3 +318,18 @@ export const fetchPosts =  () => async dispatch => {
     }
     export default connect(mapStateToProps , {fetchPosts})(PostList)
 ```
+
+### (12) Create Action Creator Of Fetching 1 User For Each Post
+
+#### /src/actions/index.js
+```js
+    // Fetch 1 User For Each Post 
+    export const fetchUser = id => async dispatch => {
+        const response = await json.get(`/users/${id}`);
+
+        dispatch({
+            type: "FETCH_USER",
+            payload: response.data
+        })
+    }
+```

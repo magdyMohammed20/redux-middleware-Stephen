@@ -231,3 +231,50 @@
         posts: postsReducer    
     });
 ```
+
+### (11) Create 'mapStateToProps' Function In 'PostsList.js' And Edit Action To Return The Actual Data
+
+#### /src/Components/PostsList.js
+```js
+    import React,{useEffect} from 'react'
+    import {connect} from 'react-redux'
+    import {fetchPosts} from '../actions/'
+
+    function PostList(props) {
+        // Call fetchPosts()
+        useEffect(() => {
+            props.fetchPosts()
+        } , [])
+        
+        // Print Data
+        console.log(props.posts)
+        
+        return (
+            <div>
+                PostList
+            </div>
+        )
+    }
+
+    const mapStateToProps = state => {
+        return {
+            posts: state.posts
+        }
+    }
+    export default connect(mapStateToProps , {fetchPosts})(PostList)
+```
+
+#### /src/actions/index.js
+```js
+import json from '../apis/json'
+
+export const fetchPosts =  () => async dispatch => {
+        const response =  await json.get('/posts');
+
+        // Return response.data Here
+        dispatch({
+            type: "FETCH_POSTS",
+            payload: response.data
+        })
+    }
+```

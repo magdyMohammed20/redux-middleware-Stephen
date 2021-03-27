@@ -319,7 +319,7 @@ export const fetchPosts =  () => async dispatch => {
     export default connect(mapStateToProps , {fetchPosts})(PostList)
 ```
 
-### (12) Create Action Creator Of Fetching 1 User For Each Post
+### (13) Create Action Creator Of Fetching 1 User For Each Post
 
 #### /src/actions/index.js
 ```js

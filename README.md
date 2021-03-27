@@ -211,7 +211,7 @@
     });
 ```
 
-### (9) Use Switch Statement With Reducer
+### (10) Use Switch Statement With Reducer
 
 #### /src/reducers/index.js
 ```js

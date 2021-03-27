@@ -1,11 +1,15 @@
 import {combineReducers} from 'redux'
 
-// Post Reducer Structure
-const postsReducer = () => {
-    return 123;
+// Use Switch Statement Here
+const postsReducer = (state = [] , action) => {
+    switch(action.type){
+        case "FETCH_POSTS":
+            return action.payload
+
+        default: return state
+    }
 }
 
-// Pass To CombineReducers
 export default combineReducers({
     posts: postsReducer    
 });

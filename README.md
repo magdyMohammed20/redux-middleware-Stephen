@@ -396,3 +396,69 @@ export const fetchPosts =  () => async dispatch => {
     }
     export default connect(mapStateToProps , {fetchPosts})(PostList)
 ```
+
+### (15) Create User Reducer And Display User Name Of Each Post
+
+#### /src/reducers/index.js
+```js
+    import {combineReducers} from 'redux'
+
+    // Use Switch Statement Here
+    const postsReducer = (state = [] , action) => {
+        switch(action.type){
+            case "FETCH_POSTS":
+                return action.payload
+
+            default: return state
+        }
+    }
+
+
+    const userReducer = (state = [] , action) => {
+        switch(action.type){
+            case "FETCH_USER":
+                return [...state , action.payload]
+
+            default: return state
+        }
+    }
+    export default combineReducers({
+        posts: postsReducer,
+        user: userReducer  
+    });
+```
+
+#### /src/Components/UserHeader.js
+```js
+    import React , {useEffect} from 'react'
+    import {connect} from 'react-redux'
+    import {fetchUser} from '../actions/'
+
+    function UserHeader(props) {
+
+        useEffect(() => {
+            props.fetchUser(props.userId)
+        } , [])
+
+        // Fetch User Of The Current Post 
+        const user = props.user.find(user => user.id === props.userId)
+        
+        // For Set 'Loading...' When Load Name
+        if(!user) {
+            return <div>Loading..</div>
+        }
+
+        return (
+            <div>
+                Name : {user.name}
+            </div>
+        )
+    }
+
+    const mapStateToProps = state => {
+        return {
+            user: state.user
+        }
+    }
+    export default connect(mapStateToProps , {fetchUser})(UserHeader)
+```

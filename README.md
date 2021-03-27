@@ -193,3 +193,20 @@
             })
         }
 ```
+
+### (9) Create postsReducer Structure
+
+#### /src/reducers/index.js
+```js
+    import {combineReducers} from 'redux'
+
+    // Post Reducer Structure
+    const postsReducer = () => {
+        return 123;
+    }
+
+    // Pass To CombineReducers
+    export default combineReducers({
+        posts: postsReducer    
+    });
+```

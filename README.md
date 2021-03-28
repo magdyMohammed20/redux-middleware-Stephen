@@ -498,3 +498,26 @@ export const fetchPosts =  () => async dispatch => {
     }
     export default connect(mapStateToProps , {fetchUser})(UserHeader)
 ```
+
+### (17) Issue : See 'XHR' Inside 'network' Tab Note That There Are More Duplicated Requests And Solution Is Use 'lodash' Library For Memoization
+
+#### Install Lodash Library
+
+    yarn add lodash
+
+#### /src/actions/index.js (Edit fetchUser Function)
+
+```js
+    export const fetchUser = id => dispatch => {
+        _fetchUser(id , dispatch)
+    }
+
+    const _fetchUser = _.memoize(async(id , dispatch) => {
+        const response = await json.get(`/users/${id}`);
+
+        dispatch({
+            type: "FETCH_USER",
+            payload: response.data
+        })
+    })
+```

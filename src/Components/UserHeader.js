@@ -2,14 +2,11 @@ import React , {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../actions/'
 
-function UserHeader(props) {
+function UserHeader({user , fetchUser , userId}) {
 
     useEffect(() => {
-        props.fetchUser(props.userId)
+        fetchUser(userId)
     } , [])
-
-    // Fetch User Of The Current Post 
-    const user = props.user.find(user => user.id === props.userId)
     
     // For Set 'Loading...' When Load Name
     if(!user) {
@@ -23,9 +20,11 @@ function UserHeader(props) {
     )
 }
 
-const mapStateToProps = state => {
+// ownProps Instead Of 'props'
+// And Filter Users Here
+const mapStateToProps = (state , ownProps) => {
     return {
-        user: state.user
+        user: state.user.find(user => user.id === ownProps.userId)
     }
 }
 export default connect(mapStateToProps , {fetchUser})(UserHeader)
